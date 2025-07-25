@@ -1,8 +1,9 @@
 import React from "react";
-import type { Todo as TodoType } from "../types";
+import type { TodoId, Todo as TodoType } from "../types";
 
 interface Props extends TodoType {
-	onRemoveTodo: (id: number) => void;
+	onRemoveTodo: ({ id }: TodoId) => void;
+	onToggleCompleteTodo: ({ id, completed }: Pick<TodoType, 'id' | 'completed'>) => void
 }
 
 export const Todo: React.FC<Props> = ({
@@ -11,6 +12,7 @@ export const Todo: React.FC<Props> = ({
 	completed,
 	createdAt,
 	onRemoveTodo,
+	onToggleCompleteTodo
 }) => {
 	return (
 		<div>
@@ -18,7 +20,10 @@ export const Todo: React.FC<Props> = ({
 				className="toggle"
 				checked={completed}
 				type="checkbox"
-				onChange={() => {}}
+				onChange={(e) => {
+					console.log('el: ', e.target.checked)
+					onToggleCompleteTodo({ id, completed: e.target.checked })
+				}}
 			/>
 			<label>{text}</label>
 			<button className="destroy" onClick={() => {

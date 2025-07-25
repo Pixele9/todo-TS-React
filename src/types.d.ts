@@ -6,6 +6,7 @@ export interface Todo {
 }
 
 export type TodoText = Pick<Todo, 'text'>
+export type TodoId = Pick<Todo, 'id'>
 export type TodoCompleted = Pick<Todo, 'completed'>
 export type TodoCreatedAt = Pick<Todo, 'createdAt'>
 
