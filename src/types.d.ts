@@ -1,0 +1,12 @@
+export interface Todo {
+  id: number;
+  text: string;
+  completed: boolean;
+  createdAt: Date;
+}
+
+export type TodoText = Pick<Todo, 'text'>
+export type TodoCompleted = Pick<Todo, 'completed'>
+export type TodoCreatedAt = Pick<Todo, 'createdAt'>
+
+export type ListOfTodos = Todo[];
