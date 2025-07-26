@@ -26,6 +26,13 @@ export const Todo: React.FC<Props> = ({
 				}}
 			/>
 			<label>{text}</label>
+			<p style={{ marginLeft: '1rem', fontSize: '15px'}}>{createdAt.toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: '2-digit'
+			})}</p>
 			<button className="destroy" onClick={() => {
 				console.log('to remove: ', id )
 				onRemoveTodo({ id })
