@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { FilterValue, TodoId , Todo as TodoType } from "./types";
+import type { FilterValue, TodoId , TodoText, Todo as TodoType } from "./types";
 import { Todos } from "./components/Todos";
 import { TODO_FILTERS } from "./consts";
 import { Footer } from "./components/Footer";
@@ -59,6 +59,19 @@ function App() {
     setTodos(newTodos)
   }
 
+  const handleAddTodo = ({ text }: TodoText): void => {
+    const newTodo = {
+      text,
+      id: crypto.randomUUID(),
+      completed: false,
+      createdAt: new Date()
+    }
+
+    const newTodos = [...todos, newTodo]
+    setTodos(newTodos)
+
+  }
+
   const activeCount = todos.filter(todo => !todo.completed).length
   const completedCount = todos.length - activeCount
 
@@ -72,7 +85,7 @@ function App() {
     <>
       <div className="todoapp">
         <Header 
-          onAddTodo={() => {}}
+          onAddTodo={handleAddTodo}
          />
         <Todos 
           onToggleCompleteTodo={handleCompleted}

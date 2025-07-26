@@ -1,7 +1,9 @@
+import React from "react"
 import type { ListOfTodos, TodoId, Todo as TodoType } from "../types"
 import { Todo } from "./Todo"
 
 interface Props {
+	list: ListOfTodos
 	todos: ListOfTodos,
 	onRemoveTodo: ({ id }: TodoId) => void
 	onToggleCompleteTodo: ({ id, completed }: Pick<TodoType, 'id' | 'completed'>) => void
